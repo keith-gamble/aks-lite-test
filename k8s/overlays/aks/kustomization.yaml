@@ -26,4 +26,4 @@ secretGenerator:
   behavior: merge
   literals:
   - gateway-base-config=gateway-base-config
-  namespace: example-aks-lite
+  namespace: example-aks-hosted
