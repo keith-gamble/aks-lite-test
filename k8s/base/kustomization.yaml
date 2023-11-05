@@ -16,16 +16,6 @@ resources:
 - pods/frontend/service.yaml
 - pods/frontend/statefulset.yaml
 
-# Add secret from generic secret in the cluster `gateway-base-config`
-# to the `gateway-base-secrets` secret in the namespace `example-aks-lite`
-# with the name `gateway-base-config`
-secretGenerator:
-- name: gateway-base-secrets
-  behavior: merge
-  literals:
-  - gateway-base-config=gateway-base-config
-  namespace: example-aks-lite
-
 configMapGenerator:
 - name: logback-xml
   files:

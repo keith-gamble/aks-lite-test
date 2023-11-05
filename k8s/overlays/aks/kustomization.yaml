@@ -18,3 +18,12 @@ patches:
     version: v1
     kind: Ingress
     name: frontend
+
+
+# Patch teh secretGenerator to set the correct namespace
+secretGenerator:
+- name: gateway-base-secrets
+  behavior: merge
+  literals:
+  - gateway-base-config=gateway-base-config
+  namespace: example-aks-lite
