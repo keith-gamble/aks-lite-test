@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      name: frontend
+  serviceName: frontend
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      partition: 0
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: name
+                operator: In
+                values:
+                - frontend
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: gateway
+        image: docker.io/bwdesigngroup/ignition-docker:8.1.32
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "1280Mi"
+            cpu: "1000m"
+        args:
+        - -m
+        - "1024"
+        - -n
+        - "frontend"
+        - -s
+        - "443"
+        - -h
+        - "80"
+        - --
+        - gateway.useProxyForwardedHeader=true
+        ports:
+        - name: http
+          containerPort: 8088
+        envFrom:
+        - secretRef:
+            name: gateway-base-secrets
+        readinessProbe:
+          exec:
+            command:
+            - health-check.sh
+            - -t
+            - "3"
+          initialDelaySeconds: 60
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 3

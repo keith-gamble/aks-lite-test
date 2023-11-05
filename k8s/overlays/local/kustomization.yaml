@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+
+namespace: example-local
+
+patches:
+# Add Traefik Ingress stickiness annotation to frontend services
+- patch: |-
+    - op: add
+      path: /spec/rules/0/host
+      value: example.localtest.me
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: frontend

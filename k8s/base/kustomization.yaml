@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  owner: kgamble
+
+buildMetadata:
+- managedByLabel
+- originAnnotations
+
+namespace: example-aks-lite
+
+resources:
+- namespace.yaml
+- pods/frontend/ingress.yaml
+- pods/frontend/service.yaml
+- pods/frontend/statefulset.yaml
+
+secretGenerator:
+- name: gateway-base-secrets
+  envs:
+  - secrets/gateway.env
+
+configMapGenerator:
+- name: logback-xml
+  files:
+  - configs/logback.xml
