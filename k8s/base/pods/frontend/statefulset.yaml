@@ -40,7 +40,7 @@ spec:
         - -m
         - "1024"
         - -n
-        - "new-name"
+        - "example"
         - -s
         - "443"
         - -h
