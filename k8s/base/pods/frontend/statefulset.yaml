@@ -11,7 +11,6 @@ spec:
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 1
       partition: 0
   template:
     metadata:
