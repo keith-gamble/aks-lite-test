@@ -40,7 +40,7 @@ spec:
         - -m
         - "1024"
         - -n
-        - "example"
+        - "example-frontend"
         - -s
         - "443"
         - -h

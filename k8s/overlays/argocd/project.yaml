@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: example-project
+  namespace: argocd
+spec:
+  description: "Project for AKS lite test"
+  sourceRepos:
+  - 'https://github.com/keith-gamble/aks-lite-test.git'
+  destinations:
+  - name: 'in-cluster'
+    namespace: example-aks-hosted
+    server: ''
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-application
+  namespace: argocd
+spec:
+  project: example-project
+  source:
+    repoURL: 'https://github.com/keith-gamble/aks-lite-test.git'
+    targetRevision: HEAD
+    path: k8s/overlays/aks
+  destination:
+    name: 'in-cluster'
+    namespace: example-aks-hosted
+    server: ''
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
