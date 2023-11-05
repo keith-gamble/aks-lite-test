@@ -52,7 +52,7 @@ spec:
           containerPort: 8088
         envFrom:
         - secretRef:
-            name: gateway-base-secrets
+            name: gateway-base-config
         readinessProbe:
           exec:
             command:
