@@ -18,3 +18,11 @@ patches:
     version: v1
     kind: Ingress
     name: frontend
+
+# The github-registry-token is in the kube-system namespace here and isnt a file
+# in the repo.  It is created by the argocd application.
+secretGenerator:
+- name: github-registry-token
+  type: kubernetes.io/dockerconfigjson
+  namespace: kube-system
+
