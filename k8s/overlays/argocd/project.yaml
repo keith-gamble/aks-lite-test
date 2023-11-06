@@ -8,7 +8,7 @@ spec:
   sourceRepos:
   - 'https://github.com/keith-gamble/aks-lite-test.git'
   destinations:
-  - name: 'in-cluster'
+  - name: 'in-cluster' # This is used when ArgoCD is running in the same cluster as the application
     namespace: example-aks-hosted
     server: ''
   clusterResourceWhitelist:

@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
     path: k8s/overlays/aks
   destination:
-    name: 'in-cluster'
+    name: 'in-cluster' # This is used when ArgoCD is running in the same cluster as the application
     namespace: example-aks-hosted
     server: ''
   syncPolicy:
