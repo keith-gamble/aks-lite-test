@@ -1,0 +1,9 @@
+repos:
+- repo: local
+  hooks:
+  - id: check-kustomize
+    name: Check Kustomize Overlays
+    entry: scripts/check-kustomize.sh
+    language: script
+    pass_filenames: false
+    types: [yaml]
