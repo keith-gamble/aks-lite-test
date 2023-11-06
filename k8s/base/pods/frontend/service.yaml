@@ -12,3 +12,17 @@ spec:
     targetPort: http
   type: ClusterIP
   clusterIP: None
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqtt-service
+spec:
+  ports:
+  - name: mqtt
+    port: 1883
+    protocol: TCP
+    targetPort: mqtt
+  selector:
+    name: broker
+  type: LoadBalancer

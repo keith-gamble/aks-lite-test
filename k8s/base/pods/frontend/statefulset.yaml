@@ -31,7 +31,7 @@ spec:
       - name: github-registry-token
       containers:
       - name: gateway
-        image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:latest
+        image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:1.0.0
         imagePullPolicy: Always
         resources:
           requests:
@@ -43,6 +43,8 @@ spec:
         ports:
         - name: http
           containerPort: 8088
+        - name: mqtt
+          containerPort: 1883
         envFrom:
         - secretRef:
             name: gateway-base-config
