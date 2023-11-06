@@ -32,7 +32,7 @@ spec:
         image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:latest
         imagePullPolicy: Always
         imagePullSecrets:
-        - name: gitHub-registry-token
+        - name: github-registry-token
         resources:
           requests:
             memory: "1280Mi"
