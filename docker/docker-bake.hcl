@@ -6,7 +6,7 @@ target "default" {
     name="${BASE_IMAGE_NAME}-${tgt}-${replace(version, ".", "-")}"
 	matrix = {
 		tgt = ["example"]
-		version = ["latest"]
+		version = ["1.0.0", "latest"]
 	}
 	args = {
 		IGNITION_VERSION = version
