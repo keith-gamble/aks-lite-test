@@ -16,6 +16,13 @@ resources:
 - pods/frontend/service.yaml
 - pods/frontend/statefulset.yaml
 
+secretGenerator:
+- name: github-registry-token
+  files:
+  - secrets/.dockerconfigjson
+  type: kubernetes.io/dockerconfigjson
+  namespace: kube-system
+
 configMapGenerator:
 - name: logback-xml
   files:
