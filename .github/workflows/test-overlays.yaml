@@ -1,0 +1,31 @@
+name: Kustomize Build Check
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install Kustomize
+      run: |
+        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+        sudo mv kustomize /usr/local/bin/
+
+    - name: Find and build all overlays
+      run: |
+        find . -name overlays -type d | while read overlay_dir; do
+          if ! kustomize build "$overlay_dir"; then
+            echo "Kustomize build failed for $overlay_dir"
+            exit 1
+          fi
+        done

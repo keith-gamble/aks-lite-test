@@ -1,0 +1,54 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+    - master
+  workflow_dispatch:
+    inputs:
+      push:
+        description: 'Push to GitHub Packages'
+        required: true
+        default: 'false'
+
+env:
+  GHCR_SLUG: ghcr.io/${{ github.repository }}
+
+jobs:
+  build-and-push-images:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      with:
+        image: tonistiigi/binfmt:qemu-v6.2.0
+        platforms: linux/amd64,linux/arm64,linux/arm/v7
+
+    - name: Docker Setup Buildx
+      uses: docker/setup-buildx-action@v3.0.0
+
+    - name: Log in to the GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and Push Production Images
+      uses: docker/bake-action@v2
+      env:
+        GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        BUILDX_NO_DEFAULT_ATTESTATIONS: 1
+      with:
+        files: |
+          ./docker/docker-bake.hcl
+        targets: default
+        push: ${{ github.event.inputs.PUSH || 'true' }}

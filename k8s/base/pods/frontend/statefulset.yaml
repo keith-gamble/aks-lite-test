@@ -29,21 +29,13 @@ spec:
             topologyKey: kubernetes.io/hostname
       containers:
       - name: gateway
-        image: docker.io/bwdesigngroup/ignition-docker:8.1.32
-        imagePullPolicy: IfNotPresent
+        image: ghcr.io/keith-gamble/aks-lite-test/example:latest
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "1280Mi"
             cpu: "1000m"
         args:
-        - -m
-        - "1024"
-        - -n
-        - "example-frontend-gateway"
-        - -s
-        - "443"
-        - -h
-        - "80"
         - --
         - gateway.useProxyForwardedHeader=true
         ports:
