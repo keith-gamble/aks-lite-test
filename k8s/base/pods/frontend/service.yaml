@@ -24,5 +24,6 @@ spec:
     protocol: TCP
     targetPort: mqtt
   selector:
-    name: broker
-  type: LoadBalancer
+    name: frontend
+  type: ClusterIP
+
