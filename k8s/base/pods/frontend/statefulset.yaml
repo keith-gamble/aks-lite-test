@@ -31,6 +31,8 @@ spec:
       - name: gateway
         image: ghcr.io/keith-gamble/aks-lite-test/example:latest
         imagePullPolicy: Always
+        imagePullSecrets:
+        - name: gitHub-registry-token
         resources:
           requests:
             memory: "1280Mi"
