@@ -29,7 +29,6 @@ spec:
             topologyKey: kubernetes.io/hostname
       imagePullSecrets:
       - name: github-registry-token
-        namespace: kube-system
       containers:
       - name: gateway
         image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:latest
