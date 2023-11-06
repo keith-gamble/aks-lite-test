@@ -12,7 +12,7 @@ target "default" {
 	args = {
 		IGNITION_VERSION = version
 	}
-    dockerfile = "Dockerfile"
+    dockerfile = "docker/Dockerfile"
     platforms = [
 		"linux/amd64", 
 		"linux/arm64", 
