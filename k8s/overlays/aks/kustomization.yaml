@@ -10,7 +10,7 @@ patches:
 - patch: |-
     - op: add
       path: /spec/rules/0/host
-      value: example.kgamble.dev
+      value: test.kgamble.dev
     - op: add
       path: /metadata/annotations/traefik.ingress.kubernetes.io~1router.middlewares
       value: redirect-to-https@file
@@ -20,11 +20,11 @@ patches:
     name: frontend
     version: v1
 
-- patch: |-
-    - op: add
-      path: /spec/routes/0/match
-      value: HostSNI(`example.kgamble.dev`)
-  target:
-    group: traefik.containo.us
-    kind: IngressRouteTCP
-    name: mqtt-ingress
+# - patch: |-
+#     - op: add
+#       path: /spec/routes/0/match
+#       value: HostSNI(`example.kgamble.dev`)
+#   target:
+#     group: traefik.containo.us
+#     kind: IngressRouteTCP
+#     name: mqtt-ingress
