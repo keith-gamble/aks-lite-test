@@ -17,5 +17,6 @@ WORKDIR /usr/local/bin/ignition
 
 COPY --chown=ignition:ignition backup.gwbk /restore.gwbk
 COPY --chown=ignition:ignition MQTT-Distributor-signed.modl /usr/local/bin/ignition/user-lib/modules/MQTT-Distributor-signed.modl
+COPY --chown=ignition:ignition logback.xml /usr/local/bin/ignition/data/logback.xml
 
 ENTRYPOINT [ "docker-entrypoint.sh", "-r", "/restore.gwbk"]
