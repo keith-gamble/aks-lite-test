@@ -13,9 +13,11 @@ ENV IGNITION_GID=2003
 
 USER root
 
+# RUN apt-get update && apt-get install -y zip unzip
+
 WORKDIR /usr/local/bin/ignition
 
-COPY --chown=ignition:ignition backup.gwbk /restore.gwbk
+# COPY --chown=ignition:ignition backup.gwbk /restore.gwbk
 COPY --chown=ignition:ignition MQTT-Distributor-signed.modl /usr/local/bin/ignition/user-lib/modules/MQTT-Distributor-signed.modl
 
-ENTRYPOINT [ "docker-entrypoint.sh", "-r", "/restore.gwbk"]
+# ENTRYPOINT [ "docker-entrypoint.sh", "-r", "/restore.gwbk"]
