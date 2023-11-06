@@ -6,7 +6,6 @@ resources:
 
 namespace: example-aks-hosted
 
-
 patches:
 - patch: |-
     - op: add
