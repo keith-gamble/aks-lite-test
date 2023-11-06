@@ -27,12 +27,12 @@ spec:
                 values:
                 - frontend
             topologyKey: kubernetes.io/hostname
+      imagePullSecrets:
+      - name: github-registry-token
       containers:
       - name: gateway
         image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:latest
         imagePullPolicy: Always
-        imagePullSecrets:
-        - name: github-registry-token
         resources:
           requests:
             memory: "1280Mi"
