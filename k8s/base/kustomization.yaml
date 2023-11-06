@@ -20,3 +20,8 @@ configMapGenerator:
 - name: logback-xml
   files:
   - configs/logback.xml
+
+secretGenerator:
+- name: github-registry-token
+  type: kubernetes.io/dockerconfigjson
+  namespace: kube-system

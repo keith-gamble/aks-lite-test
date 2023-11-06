@@ -16,3 +16,10 @@ patches:
     version: v1
     kind: Ingress
     name: frontend
+- patch: |-
+    - op: add
+      path: /files/0
+      value: secrets/.dockerconfigjson
+    target:
+      kind: kubernetes.io/dockerconfigjson
+      name: github-registry-token
