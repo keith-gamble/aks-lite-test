@@ -1,3 +1,4 @@
 *.env
 *.pat
 .dockerconfigjson
+.DS_Store
