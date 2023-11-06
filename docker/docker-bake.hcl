@@ -4,7 +4,6 @@ variable "BASE_IMAGE_NAME" {
 
 target "default" {
     name="${BASE_IMAGE_NAME}-${tgt}-${replace(version, ".", "-")}"
-    context = "."
 	matrix = {
 		tgt = ["example"]
 		version = ["latest"]
