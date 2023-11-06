@@ -24,7 +24,11 @@ jobs:
       run: |
         curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
         sudo mv kustomize /usr/local/bin/
-
+    - name: Add temporary secrets
+      run: |
+        mkdir -p k8s/base/secrets
+        echo "test" > k8s/base/secrets/.dockerconfigjson
+        echo "test" > k8s/base/secrets/gateway.env
     - name: Find and build all overlays
       run: |
         find . -name overlays -type d | while read overlay_dir; do
