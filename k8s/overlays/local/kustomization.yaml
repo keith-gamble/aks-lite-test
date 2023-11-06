@@ -20,6 +20,6 @@ patches:
     - op: add
       path: /files/0
       value: secrets/.dockerconfigjson
-    target:
-      kind: kubernetes.io/dockerconfigjson
-      name: github-registry-token
+  target:
+    kind: kubernetes.io/dockerconfigjson
+    name: github-registry-token
