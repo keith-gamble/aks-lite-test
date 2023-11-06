@@ -6,10 +6,11 @@ target "default" {
     name="${BASE_IMAGE_NAME}-${tgt}-${replace(version, ".", "-")}"
 	matrix = {
 		tgt = ["example"]
+		ignition = ["8.1.32"]
 		version = ["1.0.0", "latest"]
 	}
 	args = {
-		IGNITION_VERSION = version
+		IGNITION_VERSION = ignition
 	}
 	context = "docker"
     dockerfile = "Dockerfile"
