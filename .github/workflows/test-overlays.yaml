@@ -11,6 +11,8 @@ on:
     - master
     paths:
     - 'k8s/**'
+  workflow_dispatch:
+
 
 jobs:
   build:
