@@ -10,7 +10,7 @@ patches:
 - patch: |-
     - op: add
       path: /spec/rules/0/host
-      value: example.kgamble.dev
+      value: test.kgamble.dev
     - op: add
       path: /metadata/annotations/traefik.ingress.kubernetes.io~1router.middlewares
       value: redirect-to-https@file

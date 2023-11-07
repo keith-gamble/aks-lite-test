@@ -13,16 +13,16 @@ spec:
             name: frontend
             port:
               name: http
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRouteTCP
-# metadata:
-#   name: mqtt-ingress
-# spec:
-#   entryPoints:
-#   - mqtt
-#   routes:
-#   - match: HostSNI(`*`) # Can be specific like `example.kgamble.dev` if needed
-#     services:
-#     - name: mqtt-service
-#       port: 1883
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: mqtt-ingress
+spec:
+  entryPoints:
+  - mqtt
+  routes:
+  - match: HostSNI(`*`) # Can be specific like `example.kgamble.dev` if needed
+    services:
+    - name: mqtt-service
+      port: 1883
