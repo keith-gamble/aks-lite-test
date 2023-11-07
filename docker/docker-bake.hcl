@@ -7,7 +7,7 @@ target "default" {
 	matrix = {
 		tgt = ["example"]
 		ignition = ["8.1.32"]
-		version = ["1.0.0", "latest"]
+		version = ["1.0.0-Backup", "latest"]
 	}
 	args = {
 		IGNITION_VERSION = ignition

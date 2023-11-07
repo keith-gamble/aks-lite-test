@@ -31,7 +31,7 @@ spec:
       - name: github-registry-token
       containers:
       - name: gateway
-        image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:1.0.0
+        image: ghcr.io/keith-gamble/aks-lite-test/ignition-example:1.0.0-Backup
         imagePullPolicy: Always
         resources:
           requests:
