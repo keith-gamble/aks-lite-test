@@ -11,7 +11,6 @@ patches:
     - op: add
       path: /spec/rules/0/host
       value: example.kgamble.dev
-
   target:
     group: networking.k8s.io
     kind: Ingress
