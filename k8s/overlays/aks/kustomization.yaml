@@ -20,11 +20,11 @@ patches:
     name: frontend
     version: v1
 
-# - patch: |-
-#     - op: add
-#       path: /spec/routes/0/match
-#       value: HostSNI(`example.kgamble.dev`)
-#   target:
-#     group: traefik.containo.us
-#     kind: IngressRouteTCP
-#     name: mqtt-ingress
+- patch: |-
+    - op: add
+      path: /spec/routes/0/match
+      value: HostSNI(`something.kgamble.dev`)
+  target:
+    group: traefik.containo.us
+    kind: IngressRouteTCP
+    name: mqtt-ingress
