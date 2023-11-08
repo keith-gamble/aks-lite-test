@@ -11,6 +11,9 @@ patches:
     - op: add
       path: /spec/rules/0/host
       value: example.kgamble.dev
+    - op: add
+      path: /metadata/annotations/traefik.ingress.kubernetes.io~1router.middlewares
+      value: redirect-to-https@file
 
   target:
     group: networking.k8s.io
@@ -18,6 +21,3 @@ patches:
     name: frontend
     version: v1
 
-    # - op: add
-    #   path: /metadata/annotations/traefik.ingress.kubernetes.io~1router.middlewares
-    #   value: redirect-to-https@file
